@@ -33,11 +33,11 @@ class CharacterRepository @Inject constructor(private val apiService: ApiService
                  trigger further loading. Typically should be set several times the number of visible items
                  onscreen.
 
-                 E.g., If this value is set to 50, a [PagingData] will attempt to load 50 items in advance of
-                 data that's already been accessed.
+     E.g., If this value is set to 50, a [PagingData] will attempt to load 50 items in advance of
+     * data that's already been accessed.
                  */
-                prefetchDistance = 50,
-                enablePlaceholders = true
+                prefetchDistance = 100,
+                enablePlaceholders = false
 
             ),
             pagingSourceFactory = { CharacterDataSource(apiService) }

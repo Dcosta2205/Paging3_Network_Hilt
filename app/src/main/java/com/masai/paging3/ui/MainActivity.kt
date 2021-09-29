@@ -5,6 +5,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.masai.paging3.ui.CharacterAdapter
 import com.masai.paging3.R
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
@@ -23,16 +24,13 @@ class MainActivity : AppCompatActivity() {
         characterViewModel.searchResults().observe(this, {
             lifecycleScope.launch {
                 it?.let {
-                    /*
-                    Submit the data to the pager Adapter
-                     */
                     characterAdapter.submitData(lifecycle, it)
                 }
             }
         })
     }
 
-    private fun setAdapter() {
+    fun setAdapter() {
         characterAdapter = CharacterAdapter()
         val linearLayoutManager = LinearLayoutManager(this)
         recyclerview.apply {
